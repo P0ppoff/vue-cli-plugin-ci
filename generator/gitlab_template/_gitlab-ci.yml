@@ -1,0 +1,27 @@
+stages:
+- test
+- build
+
+lint:
+  stage: test
+  image: node
+  script:
+    - yarn
+    - yarn lint
+
+unit:
+  stage: test
+  image: node
+  script:
+    - yarn
+    - yarn test:unit
+
+bundle:
+  stage: build
+  image: node
+  script:
+    - yarn
+    - yarn build
+  artifacts:
+    paths:
+      - dist/

@@ -1,0 +1,8 @@
+# MacOS Finder Preference
+.DS_Store
+
+# IDE config
+.idea
+
+# Node Modules
+node_modules
