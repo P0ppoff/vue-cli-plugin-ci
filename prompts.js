@@ -4,7 +4,8 @@ module.exports = [
     name: 'agent',
     message: 'Which agent for your CI?',
     choices: [
-      { name: 'GitLab', value: 'gitlab' }
+      { name: 'GitLab', value: 'gitlab' },
+      { name: 'Azure DevOps', value: 'azure'}
     ],
   },
 ]

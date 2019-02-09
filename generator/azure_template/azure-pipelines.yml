@@ -1,0 +1,42 @@
+name: <%- appName %>-$(SourceBranchName)-$(Date:dd-MM-yyyy_HH-mm)
+resources:
+- repo: self
+  clean: true
+queue:
+  name: Hosted Ubuntu 1604
+
+steps:
+- task: NodeTool@0
+  displayName: 'Use Node 10.x'
+  inputs:
+    versionSpec: 10.x
+    checkLatest: true
+
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2
+  displayName: 'Use Yarn 1.x'
+  inputs:
+    checkLatest: true
+
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: 'Install '
+
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: Lint
+  inputs:
+    Arguments: lint
+
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: Test
+  inputs:
+    Arguments: test:unit
+
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: 'Build'
+  inputs:
+    Arguments: 'build'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: Dev Application'
+  inputs:
+    PathtoPublish: dist/
+    ArtifactName: application
