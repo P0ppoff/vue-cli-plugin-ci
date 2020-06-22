@@ -1,42 +1,34 @@
-name: <%- appName %>-$(SourceBranchName)-$(Date:dd-MM-yyyy_HH-mm)
-resources:
-- repo: self
-  clean: true
-queue:
-  name: Hosted Ubuntu 1604
+name: $(SourceBranchName)-$(Date:dd-MM-yyyy_HH-mm)
+trigger:
+  - master
+
+pool:
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  displayName: 'Use Node 10.x'
-  inputs:
-    versionSpec: 10.x
-    checkLatest: true
+  - task: NodeTool@0
+    inputs:
+      displayName: 'Install Node.js 12.x'
+      versionSpec: '12.x'
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2
-  displayName: 'Use Yarn 1.x'
-  inputs:
-    checkLatest: true
+  - script: |
+      yarn install
+    displayName: 'yarn install'
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: 'Install '
+  - script: |
+      yarn lint
+    displayName: 'yarn lint'
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: Lint
-  inputs:
-    Arguments: lint
+  - script: |
+      yarn test:unit
+    displayName: 'yarn test:unit'
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: Test
-  inputs:
-    Arguments: test:unit
+  - script: |
+      yarn build
+    displayName: 'yarn build'
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: 'Build'
-  inputs:
-    Arguments: 'build'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: Dev Application'
-  inputs:
-    PathtoPublish: dist/
-    ArtifactName: application
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: Application'
+    inputs:
+      PathtoPublish: dist/
+      ArtifactName: application
