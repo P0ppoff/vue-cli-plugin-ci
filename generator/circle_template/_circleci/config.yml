@@ -1,0 +1,25 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: |
+            yarn
+      - run:
+          name: Lint
+          command: |
+            yarn lint
+      - run:
+          name: Test
+          command: |
+            yarn test:unit
+      - run:
+          name: Build
+          command: |
+            yarn build
+      - store_artifacts:
+          path: dist/

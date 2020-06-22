@@ -1,11 +1,15 @@
+const AGENTS = require('../agents.const');
+
 module.exports = (api, options, rootOptions) => {
-  if (options.agent === 'gitlab') {
+  if (options.agent === AGENTS.GITLAB_CI) {
     api.render('./gitlab_template')
   }
 
-  if (options.agent === 'azure') {
-    api.render('./azure_template', {
-      appName: rootOptions.projectName.replace(' ', '')
-    })
+  if (options.agent === AGENTS.AZURE_PIPELINES) {
+    api.render('./azure_template')
   }
-}
+
+  if (options.agent === AGENTS.CIRCLE_CI) {
+    api.render('./circle_template')
+  }
+};
