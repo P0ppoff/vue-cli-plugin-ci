@@ -12,6 +12,12 @@ You can simply add the plugin to your project by this command:
 vue add ci
 ```
 
-And select the CI agent.
+And select the CI agent
 
-> Of course you should have some tests to run
+## Local development
+
+Clone the repo and use
+```bash
+yarn yarn add file:<path-to-vue-cli-plugin-ci> -D
+vue invoke vue-cli-plugin-ci
+```
