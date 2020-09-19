@@ -1,7 +1,7 @@
 {
   "name": "vue-cli-plugin-ci",
   "version": "0.3.0",
-  "description": "Vue Cli 3 Plugin to init CI in project as GitlabCI, CircleCi, Jenkins…",
+  "description": "Vue Cli Plugin to init CI in project as GitlabCI, CircleCi, Jenkins…",
   "main": "index.js",
   "author": "P0ppoff <jules.hablot@gmail.com>",
   "homepage": "https://github.com/P0ppoff/vue-cli-plugin-ci#readme",
