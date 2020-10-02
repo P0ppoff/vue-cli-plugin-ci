@@ -8,7 +8,8 @@ module.exports = [
     choices: [
       { name: 'GitLab', value: AGENTS.GITLAB_CI },
       { name: 'Azure DevOps', value: AGENTS.AZURE_PIPELINES},
-      { name: 'CircleCI', value: AGENTS.CIRCLE_CI}
+      { name: 'CircleCI', value: AGENTS.CIRCLE_CI},
+      { name: 'Github Actions', value: AGENTS.GITHUB_ACTIONS}
     ],
   },
 ];

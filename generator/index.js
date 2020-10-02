@@ -12,4 +12,8 @@ module.exports = (api, options, rootOptions) => {
   if (options.agent === AGENTS.CIRCLE_CI) {
     api.render('./circle_template')
   }
+
+  if(options.agent === AGENTS.GITHUB_ACTIONS) {
+    api.render('./github_template')
+  }
 };
