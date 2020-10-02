@@ -33,13 +33,13 @@ yarn add file:<path-to-vue-cli-plugin-ci> -D
 vue invoke vue-cli-plugin-ci
 ```
 
-### Goal 🥅
+## Goal 🥅
 
 * support any tools of continuous integration
 * switch from **YARN** to **NPM**
 * have itself a continuous integration
 
-### Dream 🦄
+## Dream 🦄
 
 Be integrated to [Vue CLI](https://github.com/vuejs/vue-cli) to help every VueJS developers to start project with continuous
 integration !
