@@ -1,9 +1,8 @@
 name: Workflow
 
-# trigger when new commits are pushed to master or main branch
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -13,12 +12,13 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
-        registry-url: https://registry.npmjs.org/
+        node-version: '12'
     - run: yarn install
     - run: yarn lint
     - run: yarn test:unit
     - run: yarn build
     - name: Publish Artifact
-      run: yarn publish
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.YARN_TOKEN}}
+      uses: actions/upload-artifact@v2
+      with:
+        name: application
+        path: dist
