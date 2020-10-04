@@ -1,0 +1,24 @@
+name: Workflow
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: yarn install
+    - run: yarn lint
+    - run: yarn test:unit
+    - run: yarn build
+    - name: Publish Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: application
+        path: dist
