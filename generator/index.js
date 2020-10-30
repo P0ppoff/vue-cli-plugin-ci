@@ -1,11 +1,20 @@
 const AGENTS = require('../agents.const');
+const PACKAGE_MANAGERS = require("../packageManagers.const");
 
 module.exports = (api, options, rootOptions) => {
   const commands = {
-    install: 'yarn',
-    lint: 'yarn lint',
-    test: 'yarn test:unit',
-    build: 'yarn build'
+    [PACKAGE_MANAGERS.YARN]: {
+      install: 'yarn',
+      lint: 'yarn lint',
+      test: 'yarn test:unit',
+      build: 'yarn build'
+    },
+    [PACKAGE_MANAGERS.NPM]: {
+      install: 'npm ci',
+      lint: 'npm run lint',
+      test: 'npm run test:unit',
+      build: 'npm run build'
+    }
   };
 
   const mapAgentConfigFile = {
@@ -17,6 +26,6 @@ module.exports = (api, options, rootOptions) => {
 
   api.render(
     mapAgentConfigFile[options.agent],
-    commands
+    commands[options.packageManager]
   );
 };
