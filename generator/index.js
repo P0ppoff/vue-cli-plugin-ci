@@ -1,19 +1,22 @@
 const AGENTS = require('../agents.const');
 
 module.exports = (api, options, rootOptions) => {
-  if (options.agent === AGENTS.GITLAB_CI) {
-    api.render('./gitlab_template')
-  }
+  const commands = {
+    install: 'yarn',
+    lint: 'yarn lint',
+    test: 'yarn test:unit',
+    build: 'yarn build'
+  };
 
-  if (options.agent === AGENTS.AZURE_PIPELINES) {
-    api.render('./azure_template')
-  }
+  const mapAgentConfigFile = {
+    [AGENTS.AZURE_PIPELINES]: "./azure_template",
+    [AGENTS.GITLAB_CI]: "./gitlab_template",
+    [AGENTS.CIRCLE_CI]: "./circle_template",
+    [AGENTS.GITHUB_ACTIONS]: "./github_template"
+  };
 
-  if (options.agent === AGENTS.CIRCLE_CI) {
-    api.render('./circle_template')
-  }
-
-  if(options.agent === AGENTS.GITHUB_ACTIONS) {
-    api.render('./github_template')
-  }
+  api.render(
+    mapAgentConfigFile[options.agent],
+    commands
+  );
 };

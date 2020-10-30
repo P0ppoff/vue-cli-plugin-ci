@@ -13,10 +13,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12'
-    - run: yarn install
-    - run: yarn lint
-    - run: yarn test:unit
-    - run: yarn build
+    - run: <%= install %>
+    - run: <%= lint %>
+    - run: <%= test %>
+    - run: <%= build %>
     - name: Publish Artifact
       uses: actions/upload-artifact@v2
       with:

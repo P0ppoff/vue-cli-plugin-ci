@@ -8,18 +8,18 @@ jobs:
       - run:
           name: Install
           command: |
-            yarn
+            <%= install %>
       - run:
           name: Lint
           command: |
-            yarn lint
+            <%= lint %>
       - run:
-          name: Test
+          name: Unit Test
           command: |
-            yarn test:unit
+            <%= test %>
       - run:
           name: Build
           command: |
-            yarn build
+            <%= build %>
       - store_artifacts:
           path: dist/

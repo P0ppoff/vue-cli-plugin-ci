@@ -6,22 +6,22 @@ lint:
   stage: test
   image: node
   script:
-    - yarn
-    - yarn lint
+    - <%= install %>
+    - <%= lint %>
 
 unit:
   stage: test
   image: node
   script:
-    - yarn
-    - yarn test:unit
+    - <%= install %>
+    - <%= test %>
 
 bundle:
   stage: build
   image: node
   script:
-    - yarn
-    - yarn build
+    - <%= install %>
+    - <%= build %>
   artifacts:
     paths:
       - dist/

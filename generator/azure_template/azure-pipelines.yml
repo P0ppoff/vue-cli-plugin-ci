@@ -12,20 +12,20 @@ steps:
       versionSpec: '12.x'
 
   - script: |
-      yarn install
-    displayName: 'yarn install'
+      <%= install %>
+    displayName: 'Install dependencies'
 
   - script: |
-      yarn lint
-    displayName: 'yarn lint'
+      <%= lint %>
+    displayName: 'Lint'
 
   - script: |
-      yarn test:unit
-    displayName: 'yarn test:unit'
+      <%= test %>
+    displayName: 'Unit testing'
 
   - script: |
-      yarn build
-    displayName: 'yarn build'
+      <%= build %>
+    displayName: 'Build'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: Application'
