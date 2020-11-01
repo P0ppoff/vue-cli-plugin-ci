@@ -5,7 +5,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
-A Vue CLI plugin to initialize Continuous Integration on many platforms for your project using **YARN**.
+A Vue CLI plugin to initialize Continuous Integration on many platforms for your project using **YARN** or **NPM**.
 
 ## Usage ⚙️
 
@@ -15,7 +15,8 @@ You can simply add the plugin to your project by this command
 vue add ci
 ```
 
-Then select the CI agent
+- Then select the pagkage manager
+- Then select the CI agent
 
 ## Contributing 🍰
 
@@ -35,9 +36,9 @@ vue invoke vue-cli-plugin-ci
 
 ## Goal 🥅
 
-* support any tools of continuous integration
-* switch from **YARN** to **NPM**
-* have itself a continuous integration
+* [ ] support any tools of continuous integration
+* [x] switch between **YARN** and **NPM**
+* [ ] have itself a continuous integration
 
 ## Dream 🦄
 
