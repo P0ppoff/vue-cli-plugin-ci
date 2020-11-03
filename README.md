@@ -7,6 +7,8 @@
 
 A Vue CLI plugin to initialize Continuous Integration on many platforms for your project using **YARN** or **NPM**.
 
+<img src="./vue-cli-plugin-ci.svg">
+
 ## Usage ⚙️
 
 You can simply add the plugin to your project by this command
